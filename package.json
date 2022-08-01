@@ -2,8 +2,9 @@
   "name": "trash-tracker",
   "version": "1.0.0",
   "description": "a simple, lightweight system that allows residents and staff of the neighborhood to report illegal dumping",
-  "main": "twilio.js",
+  "main": "./src/server.js",
   "dependencies": {
+    "aws-serverless-express": "^3.4.0",
     "body-parser": "^1.20.0",
     "cookie-parser": "~1.4.3",
     "debug": "^2.6.8",
@@ -24,11 +25,13 @@
     "yarn": "^1.22.19"
   },
   "devDependencies": {
-    "nodemon": "^2.0.16"
+    "nodemon": "^2.0.16",
+    "serverless": "^3.21.0"
   },
   "scripts": {
-    "start": "node index.js",
-    "watch": "nodemon index.js"
+    "start": "nodemon ./src/local.js",
+    "watch": "nodemon ./src/server.js",
+    "deploy": "serverless deploy"
   },
   "license": "MIT",
   "repository": {

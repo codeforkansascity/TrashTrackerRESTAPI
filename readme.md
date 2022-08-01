@@ -18,23 +18,22 @@ Trash Tracker is a simple, lightweight system that allows residents and staff of
 1. Install dependencies
 
     ```bash
-    npm install -g yarn && \
-    yarn install
+    npm install
     ```
 
 2. Copy the sample configuration file and edit it to match your configuration
 
    ```bash
-   $ cp .env.EXAMPLE .env
+   cp .env.EXAMPLE .env
    ```
    You can find your `TWILIO_ACCOUNT_SID` and `TWILIO_AUTH_TOKEN` in your [Twilio Account Settings](https://www.twilio.com/console).
 
 ## Usage
 To run the application, enter:
 
-    ```bash
-    $ node ./controllers/flow.js
-    ```
+```bash
+npm start
+```
 
 Any users can send a text message to our Twilio phone number (816) 608-6096 and start the conversation! The following photo shows an example:
 
