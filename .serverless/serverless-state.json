@@ -175,7 +175,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/my-serverless-app/production/1659390089320-2022-08-01T21:41:29.320Z/my-serverless-app.zip"
+                "S3Key": "serverless/my-serverless-app/production/1659392316048-2022-08-01T22:18:36.048Z/my-serverless-app.zip"
               },
               "Handler": "lambda.universal",
               "Runtime": "nodejs14.x",
@@ -193,14 +193,14 @@
               "ApiLogGroup"
             ]
           },
-          "ApiLambdaVersionaw0GlYkKig6g1dmFemxd4K4i29pSeKzgUvj1rgJMfs": {
+          "ApiLambdaVersioneMhuF4ud1qfHkpAyJfwY8NGRPpXeMSDELEVqIaUCLU": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "ApiLambdaFunction"
               },
-              "CodeSha256": "xQ4XCXpPBBEgqXyza9Htk3FX9+bvMBw3lKMiwhc4Kzw="
+              "CodeSha256": "t6TR+mjnyEHA5ar7MZyd8NPlzEVNzgWfQSRLUvgf7mU="
             }
           },
           "ApiGatewayRestApi": {
@@ -229,52 +229,6 @@
                 "Ref": "ApiGatewayRestApi"
               }
             }
-          },
-          "ApiGatewayMethodProxyVarAny": {
-            "Type": "AWS::ApiGateway::Method",
-            "Properties": {
-              "HttpMethod": "ANY",
-              "RequestParameters": {},
-              "ResourceId": {
-                "Ref": "ApiGatewayResourceProxyVar"
-              },
-              "RestApiId": {
-                "Ref": "ApiGatewayRestApi"
-              },
-              "ApiKeyRequired": false,
-              "AuthorizationType": "NONE",
-              "Integration": {
-                "IntegrationHttpMethod": "POST",
-                "Type": "AWS_PROXY",
-                "Uri": {
-                  "Fn::Join": [
-                    "",
-                    [
-                      "arn:",
-                      {
-                        "Ref": "AWS::Partition"
-                      },
-                      ":apigateway:",
-                      {
-                        "Ref": "AWS::Region"
-                      },
-                      ":lambda:path/2015-03-31/functions/",
-                      {
-                        "Fn::GetAtt": [
-                          "ApiLambdaFunction",
-                          "Arn"
-                        ]
-                      },
-                      "/invocations"
-                    ]
-                  ]
-                }
-              },
-              "MethodResponses": []
-            },
-            "DependsOn": [
-              "ApiLambdaPermissionApiGateway"
-            ]
           },
           "ApiGatewayMethodAny": {
             "Type": "AWS::ApiGateway::Method",
@@ -325,7 +279,53 @@
               "ApiLambdaPermissionApiGateway"
             ]
           },
-          "ApiGatewayDeployment1659390086464": {
+          "ApiGatewayMethodProxyVarAny": {
+            "Type": "AWS::ApiGateway::Method",
+            "Properties": {
+              "HttpMethod": "ANY",
+              "RequestParameters": {},
+              "ResourceId": {
+                "Ref": "ApiGatewayResourceProxyVar"
+              },
+              "RestApiId": {
+                "Ref": "ApiGatewayRestApi"
+              },
+              "ApiKeyRequired": false,
+              "AuthorizationType": "NONE",
+              "Integration": {
+                "IntegrationHttpMethod": "POST",
+                "Type": "AWS_PROXY",
+                "Uri": {
+                  "Fn::Join": [
+                    "",
+                    [
+                      "arn:",
+                      {
+                        "Ref": "AWS::Partition"
+                      },
+                      ":apigateway:",
+                      {
+                        "Ref": "AWS::Region"
+                      },
+                      ":lambda:path/2015-03-31/functions/",
+                      {
+                        "Fn::GetAtt": [
+                          "ApiLambdaFunction",
+                          "Arn"
+                        ]
+                      },
+                      "/invocations"
+                    ]
+                  ]
+                }
+              },
+              "MethodResponses": []
+            },
+            "DependsOn": [
+              "ApiLambdaPermissionApiGateway"
+            ]
+          },
+          "ApiGatewayDeployment1659392313027": {
             "Type": "AWS::ApiGateway::Deployment",
             "Properties": {
               "RestApiId": {
@@ -334,8 +334,8 @@
               "StageName": "production"
             },
             "DependsOn": [
-              "ApiGatewayMethodProxyVarAny",
-              "ApiGatewayMethodAny"
+              "ApiGatewayMethodAny",
+              "ApiGatewayMethodProxyVarAny"
             ]
           },
           "ApiLambdaPermissionApiGateway": {
@@ -388,7 +388,7 @@
           "ApiLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "ApiLambdaVersionaw0GlYkKig6g1dmFemxd4K4i29pSeKzgUvj1rgJMfs"
+              "Ref": "ApiLambdaVersioneMhuF4ud1qfHkpAyJfwY8NGRPpXeMSDELEVqIaUCLU"
             },
             "Export": {
               "Name": "sls-my-serverless-app-production-ApiLambdaFunctionQualifiedArn"
@@ -512,10 +512,18 @@
         "handler": "lambda.universal",
         "events": [
           {
-            "http": "ANY {proxy+}"
+            "http": {
+              "path": "",
+              "method": "any",
+              "integration": "AWS_PROXY"
+            }
           },
           {
-            "http": "ANY /"
+            "http": {
+              "path": "{proxy+}",
+              "method": "any",
+              "integration": "AWS_PROXY"
+            }
           }
         ],
         "name": "my-serverless-app-production-api",
@@ -524,7 +532,7 @@
         "timeout": 10,
         "runtime": "nodejs14.x",
         "vpc": {},
-        "versionLogicalId": "ApiLambdaVersionaw0GlYkKig6g1dmFemxd4K4i29pSeKzgUvj1rgJMfs"
+        "versionLogicalId": "ApiLambdaVersioneMhuF4ud1qfHkpAyJfwY8NGRPpXeMSDELEVqIaUCLU"
       }
     },
     "configValidationMode": "warn",
@@ -543,7 +551,7 @@
     "artifact": "/Users/cks/code/TrashTrackerRESTAPI/.serverless/my-serverless-app.zip"
   },
   "package": {
-    "artifactDirectoryName": "serverless/my-serverless-app/production/1659390089320-2022-08-01T21:41:29.320Z",
+    "artifactDirectoryName": "serverless/my-serverless-app/production/1659392316048-2022-08-01T22:18:36.048Z",
     "artifact": "my-serverless-app.zip"
   }
 }

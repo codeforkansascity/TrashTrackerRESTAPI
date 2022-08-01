@@ -6,6 +6,7 @@
 - [Description](#description)
 - [Installation](#installation)
 - [Usage](#usage)
+- [Deployment](#deployment)
 - [Local Development](#local-development)
 - [Other Usages](#other-usages)
 - [License](#license)
@@ -40,6 +41,9 @@ Any users can send a text message to our Twilio phone number (816) 608-6096 and 
 ![Example of text communication](./public/images/example_text_communication.jpg)
 
 After the conversation is complete, you can go to http://localhost:1337/ to see the reporting information.
+
+## Deployment
+This app is deployed on AWS Lambda. You can see report records JSON [here](https://fgn4r0is75.execute-api.us-east-2.amazonaws.com/production).
 
 ## Local Development
 
