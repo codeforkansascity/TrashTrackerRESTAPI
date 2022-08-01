@@ -8,7 +8,6 @@
 - [Usage](#usage)
 - [Local Development](#local-development)
 - [Other Usages](#other-usages)
-- [Credits](#credits)
 - [License](#license)
 
 ## Description
@@ -54,30 +53,6 @@ $ ngrok http 1337
 Once you acquire a forwarding url from ngrok, copy and paste it in http_request_english and http_request_spanish widgets in your Twilio Studio flow. You will need to update the url everytime you run that script. The below photo shows an example.
 
 ![Example of http_request widget](./public/images/example_http_request_widget.png)
-
-## Other Usages
-
-If you want to design your own app without using Twilio flow, here are some resources: 
-1. To initiate or send a custom message, enter:
-    ```bash
-    $ node ./controllers/mms-send.js
-    ```
-2. To fetch a message sent to your Twilio number, enter:
-    ```bash
-    $ node ./controllers/mms-fetch.js
-    ```
-3. To set up an auto-generated reply to messages sent to your Twilio number, enter: 
-    ```bash
-    $ node ./controllers/sms.js
-    ```
-4. To send an image to your webhook url, enter the following command and go to [http://localhost:1337/](http://localhost:1337/) to see the images received.
-
-    ```bash
-    $ yarn start
-    ```
-
-## Credits
-Twilio documentations have been tremendous help for this project, especially the ones on [Programmable SMS](https://www.twilio.com/docs/sms/quickstart/node#sign-up-for-twilio-and-get-a-twilio-phone-number) and on [Twilio Studio](https://www.twilio.com/docs/studio/user-guide/get-started). The 4th usage of "other usages" of this repository uses almost all code from the Twilio repository [receive-mms-node](https://github.com/TwilioDevEd/receive-mms-node).
 
 ## License
 
