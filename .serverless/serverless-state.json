@@ -175,7 +175,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/my-serverless-app/production/1659392316048-2022-08-01T22:18:36.048Z/my-serverless-app.zip"
+                "S3Key": "serverless/my-serverless-app/production/1659394063312-2022-08-01T22:47:43.312Z/my-serverless-app.zip"
               },
               "Handler": "lambda.universal",
               "Runtime": "nodejs14.x",
@@ -193,14 +193,14 @@
               "ApiLogGroup"
             ]
           },
-          "ApiLambdaVersioneMhuF4ud1qfHkpAyJfwY8NGRPpXeMSDELEVqIaUCLU": {
+          "ApiLambdaVersion0IdDLrcyK1CnzrX6tHg4oAjTt5heTdqfjo3R09uFgI": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "ApiLambdaFunction"
               },
-              "CodeSha256": "t6TR+mjnyEHA5ar7MZyd8NPlzEVNzgWfQSRLUvgf7mU="
+              "CodeSha256": "Vl6Z5ZR0NQPhwHaDq6Hl+qVjng3DxdJAynohI5I/k/A="
             }
           },
           "ApiGatewayRestApi": {
@@ -325,7 +325,7 @@
               "ApiLambdaPermissionApiGateway"
             ]
           },
-          "ApiGatewayDeployment1659392313027": {
+          "ApiGatewayDeployment1659394060465": {
             "Type": "AWS::ApiGateway::Deployment",
             "Properties": {
               "RestApiId": {
@@ -388,7 +388,7 @@
           "ApiLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "ApiLambdaVersioneMhuF4ud1qfHkpAyJfwY8NGRPpXeMSDELEVqIaUCLU"
+              "Ref": "ApiLambdaVersion0IdDLrcyK1CnzrX6tHg4oAjTt5heTdqfjo3R09uFgI"
             },
             "Export": {
               "Name": "sls-my-serverless-app-production-ApiLambdaFunctionQualifiedArn"
@@ -532,7 +532,7 @@
         "timeout": 10,
         "runtime": "nodejs14.x",
         "vpc": {},
-        "versionLogicalId": "ApiLambdaVersioneMhuF4ud1qfHkpAyJfwY8NGRPpXeMSDELEVqIaUCLU"
+        "versionLogicalId": "ApiLambdaVersion0IdDLrcyK1CnzrX6tHg4oAjTt5heTdqfjo3R09uFgI"
       }
     },
     "configValidationMode": "warn",
@@ -551,7 +551,7 @@
     "artifact": "/Users/cks/code/TrashTrackerRESTAPI/.serverless/my-serverless-app.zip"
   },
   "package": {
-    "artifactDirectoryName": "serverless/my-serverless-app/production/1659392316048-2022-08-01T22:18:36.048Z",
+    "artifactDirectoryName": "serverless/my-serverless-app/production/1659394063312-2022-08-01T22:47:43.312Z",
     "artifact": "my-serverless-app.zip"
   }
 }
